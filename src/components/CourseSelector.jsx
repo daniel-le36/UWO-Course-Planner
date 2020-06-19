@@ -1,10 +1,46 @@
 import React, { Component } from "react";
-import { Dropdown, Button, List, Card } from "semantic-ui-react";
+import {
+  Dropdown,
+  Button,
+  List,
+  Card,
+  Modal,
+  Header,
+  Accordion,
+  Icon,
+} from "semantic-ui-react";
 class CourseSelector extends Component {
   state = {
     selectedCourses: [],
     courseList: [],
     availableCourses: [],
+    modalOpen: false,
+    modalContent: {
+      courseData: { title: "", description: "", courseId: -1 },
+      newPrereqs: [
+        { code: "Computer Science 1234", name: "Finding if this works" },
+        { code: "Computer Science 1234", name: "Finding if this works" },
+        { code: "Computer Science 1234", name: "Finding if this works" },
+      ],
+    },
+    activeIndex: -1,
+  };
+  closeModal = () => {
+    this.setState({ modalOpen: false });
+  };
+  openCourseModal = (course) => {
+    console.log(course);
+    const newCourseData = { ...this.state.modalContent };
+    newCourseData.courseData.title =
+      course.subject +
+      " " +
+      course.number +
+      course.suffix +
+      " - " +
+      course.name;
+    newCourseData.courseData.description = course.description;
+    newCourseData.courseData.courseId = course.courseId;
+    this.setState({ modalOpen: true, modalContent: newCourseData });
   };
   addCourse = (event, { value }) => {
     const courseList = [...this.state.selectedCourses];
@@ -110,9 +146,48 @@ class CourseSelector extends Component {
               meta={course.name}
               description={course.description}
               link
+              onClick={() => this.openCourseModal(course)}
             />
           ))}
         </div>
+        <Modal open={this.state.modalOpen} onClose={this.closeModal}>
+          <Modal.Header>
+            {this.state.modalContent.courseData.title}
+          </Modal.Header>
+          <Modal.Content>
+            <Modal.Description
+              content={this.state.modalContent.courseData.description}
+            ></Modal.Description>
+
+            <Header>Courses this can be used as a prerequisite for:</Header>
+            <List>
+              {this.state.modalContent.newPrereqs.map((course) => (
+                <List.Item>
+                  <List.Icon name="right triangle" />
+                  <List.Content>
+                    <List.Header>{course.code}</List.Header>
+                    <List.Description>{course.name}</List.Description>
+                  </List.Content>
+                </List.Item>
+              ))}
+            </List>
+            <Header>Courses this is an antirequisite for:</Header>
+            <List>
+              {this.state.modalContent.newPrereqs.map((course) => (
+                <List.Item>
+                  <List.Icon name="right triangle" />
+                  <List.Content>
+                    <List.Header>{course.code}</List.Header>
+                    <List.Description>{course.name}</List.Description>
+                  </List.Content>
+                </List.Item>
+              ))}
+            </List>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button onClick={this.close} positive content="Add This Course" />
+          </Modal.Actions>
+        </Modal>
       </div>
     );
   }
