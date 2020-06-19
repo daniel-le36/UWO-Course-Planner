@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.CourseSelect {
+  width: 500px;
+}
+#courseResults {
+  display: flex;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.courseCard {
+  min-width: 150px;
+  margin-right: 50px !important;
+}
