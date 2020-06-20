@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import CourseModal from "./CourseModal";
+import Filter from "./Filter";
 import {
   Dropdown,
   Button,
@@ -9,6 +11,8 @@ import {
   Accordion,
   Icon,
   Checkbox,
+  Form,
+  Label,
 } from "semantic-ui-react";
 class CourseSelector extends Component {
   state = {
@@ -18,15 +22,20 @@ class CourseSelector extends Component {
     modalOpen: false,
     modalContent: {
       courseData: { title: "", description: "", courseId: -1 },
-      newPrereqs: [
-        { code: "Computer Science 1234", name: "Finding if this works" },
-        { code: "Computer Science 1234", name: "Finding if this works" },
-        { code: "Computer Science 1234", name: "Finding if this works" },
-      ],
+      newPrereqs: [],
       newAntireqs: [],
     },
     activeIndex: -1,
     noPrereqs: false,
+    filterBySubjects: ["Computer Science", "Calculus"],
+    availableSubjects: [
+      {
+        id: "Computer Science",
+        value: "Computer Science",
+        text: "Computer Science",
+      },
+      { id: "Computer Science", value: "Computer Science", text: "Calculus" },
+    ],
   };
   toggleNoPrereqs = () => {
     const noprereqs = this.state.noPrereqs;
@@ -35,7 +44,8 @@ class CourseSelector extends Component {
         noPrereqs: !noprereqs,
       },
       () => {
-        this.updateCourses();
+        const courseList = [...this.state.selectedCourses];
+        this.getValidCourses(courseList);
       }
     );
   };
@@ -110,10 +120,6 @@ class CourseSelector extends Component {
   addCourse = (event, { value }) => {
     const courseList = [...this.state.selectedCourses];
     courseList.push(value);
-    this.getValidCourses(courseList);
-  };
-  updateCourses = () => {
-    const courseList = [...this.state.selectedCourses];
     this.getValidCourses(courseList);
   };
   removeCourse = (value) => {
@@ -193,10 +199,10 @@ class CourseSelector extends Component {
           </div>
         </div>
         <div>
-          <Checkbox
-            toggle
-            label="Include courses with no prerequisites"
-            onChange={this.toggleNoPrereqs}
+          <Filter
+            availableSubjects={this.state.availableSubjects}
+            filterBySubjects={this.state.filterBySubjects}
+            toggleNoPrereqs={this.toggleNoPrereqs}
           />
         </div>
         <div id="courseResults">
@@ -211,49 +217,12 @@ class CourseSelector extends Component {
             />
           ))}
         </div>
-        <Modal open={this.state.modalOpen} onClose={this.closeModal}>
-          <Modal.Header>
-            {this.state.modalContent.courseData.title}
-          </Modal.Header>
-          <Modal.Content>
-            <Modal.Description
-              content={this.state.modalContent.courseData.description}
-            ></Modal.Description>
-
-            <Header>Courses this can be used as a prerequisite for:</Header>
-            <List>
-              {this.state.modalContent.newPrereqs.map((course) => (
-                <List.Item>
-                  <List.Icon name="right triangle" />
-                  <List.Content>
-                    <List.Header>{course.code}</List.Header>
-                    <List.Description>{course.name}</List.Description>
-                  </List.Content>
-                </List.Item>
-              ))}
-            </List>
-            <Header>Courses this is an antirequisite for:</Header>
-            <List>
-              {this.state.modalContent.newAntireqs.map((course) => (
-                <List.Item>
-                  <List.Icon name="right triangle" />
-                  <List.Content>
-                    <List.Header>{course.code}</List.Header>
-                    <List.Description>{course.name}</List.Description>
-                  </List.Content>
-                </List.Item>
-              ))}
-            </List>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button
-              value={this.state.modalContent.courseData.courseId}
-              onClick={this.addCourse}
-              positive
-              content="Add This Course"
-            />
-          </Modal.Actions>
-        </Modal>
+        <CourseModal
+          modalOpen={this.state.modalOpen}
+          modalContent={this.state.modalContent}
+          addCourse={this.addCourse}
+          closeModal={this.closeModal}
+        />
       </div>
     );
   }
