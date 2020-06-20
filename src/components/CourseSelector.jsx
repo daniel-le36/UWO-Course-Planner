@@ -8,6 +8,7 @@ import {
   Header,
   Accordion,
   Icon,
+  Checkbox,
 } from "semantic-ui-react";
 class CourseSelector extends Component {
   state = {
@@ -25,7 +26,20 @@ class CourseSelector extends Component {
       newAntireqs: [],
     },
     activeIndex: -1,
+    noPrereqs: false,
   };
+  toggleNoPrereqs = () => {
+    const noprereqs = this.state.noPrereqs;
+    this.setState(
+      {
+        noPrereqs: !noprereqs,
+      },
+      () => {
+        this.updateCourses();
+      }
+    );
+  };
+
   closeModal = () => {
     this.setState({ modalOpen: false });
   };
@@ -78,7 +92,10 @@ class CourseSelector extends Component {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ selection: courseList }),
+      body: JSON.stringify({
+        selection: courseList,
+        includeNoPrereqs: this.state.noPrereqs,
+      }),
     })
       .then((res) => res.json())
       .then((result) => {
@@ -93,6 +110,10 @@ class CourseSelector extends Component {
   addCourse = (event, { value }) => {
     const courseList = [...this.state.selectedCourses];
     courseList.push(value);
+    this.getValidCourses(courseList);
+  };
+  updateCourses = () => {
+    const courseList = [...this.state.selectedCourses];
     this.getValidCourses(courseList);
   };
   removeCourse = (value) => {
@@ -170,6 +191,13 @@ class CourseSelector extends Component {
                 ))}
             </List>
           </div>
+        </div>
+        <div>
+          <Checkbox
+            toggle
+            label="Include courses with no prerequisites"
+            onChange={this.toggleNoPrereqs}
+          />
         </div>
         <div id="courseResults">
           {this.state.availableCourses.map((course) => (
