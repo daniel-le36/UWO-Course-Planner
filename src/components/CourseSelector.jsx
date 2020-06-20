@@ -22,6 +22,7 @@ class CourseSelector extends Component {
         { code: "Computer Science 1234", name: "Finding if this works" },
         { code: "Computer Science 1234", name: "Finding if this works" },
       ],
+      newAntireqs: [],
     },
     activeIndex: -1,
   };
@@ -29,7 +30,6 @@ class CourseSelector extends Component {
     this.setState({ modalOpen: false });
   };
   openCourseModal = (course) => {
-    console.log(course);
     const newCourseData = { ...this.state.modalContent };
     newCourseData.courseData.title =
       course.subject +
@@ -40,12 +40,41 @@ class CourseSelector extends Component {
       course.name;
     newCourseData.courseData.description = course.description;
     newCourseData.courseData.courseId = course.courseId;
-    this.setState({ modalOpen: true, modalContent: newCourseData });
+
+    fetch(
+      "http://127.0.0.1:5000/api/v1/resources/prereqsandantireqs?courseId=" +
+        course.courseId
+    )
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          newCourseData.newPrereqs = result.prereqCourses.map((course) => {
+            const newPrereq = {};
+            newPrereq.code =
+              course.subject + " " + course.number + course.suffix;
+            newPrereq.name = course.name;
+            return newPrereq;
+          });
+          newCourseData.newAntireqs = result.antireqCourses.map((course) => {
+            const newAntireq = {};
+            newAntireq.code =
+              course.subject + " " + course.number + course.suffix;
+            newAntireq.name = course.name;
+            return newAntireq;
+          });
+          this.setState({ modalOpen: true, modalContent: newCourseData });
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          console.log("yeet");
+        }
+      );
   };
   addCourse = (event, { value }) => {
     const courseList = [...this.state.selectedCourses];
     courseList.push(value);
-    courseList.push(1001);
     fetch("http://127.0.0.1:5000/api/v1/resources/getvalidcourses", {
       method: "POST",
       headers: {
@@ -59,7 +88,6 @@ class CourseSelector extends Component {
           availableCourses: result["availableCourses"],
           selectedCourses: courseList,
         });
-        console.log(result["availableCourses"]);
       });
   };
   removeCourse = (value) => {
@@ -173,7 +201,7 @@ class CourseSelector extends Component {
             </List>
             <Header>Courses this is an antirequisite for:</Header>
             <List>
-              {this.state.modalContent.newPrereqs.map((course) => (
+              {this.state.modalContent.newAntireqs.map((course) => (
                 <List.Item>
                   <List.Icon name="right triangle" />
                   <List.Content>
@@ -185,7 +213,12 @@ class CourseSelector extends Component {
             </List>
           </Modal.Content>
           <Modal.Actions>
-            <Button onClick={this.close} positive content="Add This Course" />
+            <Button
+              value={this.state.modalContent.courseData.courseId}
+              onClick={this.addCourse}
+              positive
+              content="Add This Course"
+            />
           </Modal.Actions>
         </Modal>
       </div>
