@@ -72,9 +72,7 @@ class CourseSelector extends Component {
         }
       );
   };
-  addCourse = (event, { value }) => {
-    const courseList = [...this.state.selectedCourses];
-    courseList.push(value);
+  getValidCourses = (courseList) => {
     fetch("http://127.0.0.1:5000/api/v1/resources/getvalidcourses", {
       method: "POST",
       headers: {
@@ -87,14 +85,21 @@ class CourseSelector extends Component {
         this.setState({
           availableCourses: result["availableCourses"],
           selectedCourses: courseList,
+          modalOpen: false,
         });
       });
+  };
+
+  addCourse = (event, { value }) => {
+    const courseList = [...this.state.selectedCourses];
+    courseList.push(value);
+    this.getValidCourses(courseList);
   };
   removeCourse = (value) => {
     const courseList = [
       ...this.state.selectedCourses.filter((x) => x !== value),
     ];
-    this.setState({ selectedCourses: courseList });
+    this.getValidCourses(courseList);
   };
 
   componentDidMount() {
