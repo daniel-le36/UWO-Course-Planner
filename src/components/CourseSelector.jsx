@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CourseModal from "./CourseModal";
-import Filter from "./Filter";
+import ValidCourses from "./ValidCourses";
 import {
   Dropdown,
   Button,
@@ -27,15 +27,9 @@ class CourseSelector extends Component {
     },
     activeIndex: -1,
     noPrereqs: false,
-    filterBySubjects: ["Computer Science", "Calculus"],
-    availableSubjects: [
-      {
-        id: "Computer Science",
-        value: "Computer Science",
-        text: "Computer Science",
-      },
-      { id: "Computer Science", value: "Computer Science", text: "Calculus" },
-    ],
+    filterBySubjects: [],
+    availableSubjects: [],
+    filteredSubjs: [],
   };
   toggleNoPrereqs = () => {
     const noprereqs = this.state.noPrereqs;
@@ -52,6 +46,20 @@ class CourseSelector extends Component {
 
   closeModal = () => {
     this.setState({ modalOpen: false });
+  };
+  addFilterSubj = (event, { value }) => {
+    const subject = this.state.availableSubjects.find(
+      (subj) => subj.value === value
+    );
+    const filterSubjs = this.state.filterBySubjects;
+    filterSubjs.push(subject);
+    const newSubjects = this.state.availableSubjects.filter(
+      (subj) => !filterSubjs.map((subj) => subj.value).includes(subj.value)
+    );
+    this.setState({
+      availableSubjects: newSubjects,
+      filterBySubjects: filterSubjs,
+    });
   };
   openCourseModal = (course) => {
     const newCourseData = { ...this.state.modalContent };
@@ -113,6 +121,13 @@ class CourseSelector extends Component {
           availableCourses: result["availableCourses"],
           selectedCourses: courseList,
           modalOpen: false,
+          availableSubjects: result["subjectList"].map((subject) => {
+            const newSubject = {};
+            newSubject.key = subject.subjectId;
+            newSubject.value = subject.subjectId;
+            newSubject.text = subject.subjectName;
+            return newSubject;
+          }),
         });
       });
   };
@@ -198,25 +213,12 @@ class CourseSelector extends Component {
             </List>
           </div>
         </div>
-        <div>
-          <Filter
-            availableSubjects={this.state.availableSubjects}
-            filterBySubjects={this.state.filterBySubjects}
-            toggleNoPrereqs={this.toggleNoPrereqs}
-          />
-        </div>
-        <div id="courseResults">
-          {this.state.availableCourses.map((course) => (
-            <Card
-              className="courseCard"
-              header={course.subject + " " + course.number + course.suffix}
-              meta={course.name}
-              description={course.description}
-              link
-              onClick={() => this.openCourseModal(course)}
-            />
-          ))}
-        </div>
+        <ValidCourses
+          availableSubjects={this.state.availableSubjects}
+          availableCourses={this.state.availableCourses}
+          toggleNoPrereqs={this.toggleNoPrereqs}
+          openCourseModal={this.openCourseModal}
+        />
         <CourseModal
           modalOpen={this.state.modalOpen}
           modalContent={this.state.modalContent}

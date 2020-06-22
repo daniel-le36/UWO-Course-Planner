@@ -1,6 +1,16 @@
 import React from "react";
 import { Form, Icon, Label } from "semantic-ui-react";
-function Filter({ availableSubjects, filterBySubjects, toggleNoPrereqs }) {
+function Filter({
+  subjList,
+  filterBySubjects,
+  toggleNoPrereqs,
+  addFilterSubj,
+  removeFilterSubj,
+}) {
+  /* const [open, setOpen] = React.useState(filterBySubjects);
+  const close = () => {
+    setOpen([]);
+  }; */
   return (
     <Form>
       <Form.Group>
@@ -13,13 +23,14 @@ function Filter({ availableSubjects, filterBySubjects, toggleNoPrereqs }) {
           value=""
           selectOnBlur={false}
           noResultsMessage="No courses found"
-          options={availableSubjects}
+          onChange={addFilterSubj}
+          options={subjList}
         ></Form.Dropdown>
       </Form.Group>
       <Form.Group>
         {filterBySubjects.map((subject) => (
-          <Label as="a" icon>
-            {subject}
+          <Label as="a" icon onClick={() => removeFilterSubj(subject.value)}>
+            {subject.text}
             <Icon name="close" />
           </Label>
         ))}
