@@ -1,21 +1,11 @@
 import React, { Component } from "react";
 import CourseModal from "./CourseModal";
 import ValidCourses from "./ValidCourses";
-import {
-  Dropdown,
-  Button,
-  List,
-  Card,
-  Modal,
-  Header,
-  Accordion,
-  Icon,
-  Checkbox,
-  Form,
-  Label,
-} from "semantic-ui-react";
+import CourseList from "./CourseList";
+import { Dropdown, Button, List, Header } from "semantic-ui-react";
 class CourseSelector extends Component {
   state = {
+    allChosenCourses: [], // Master list of selected courses
     selectedCourses: [],
     courseList: [],
     availableCourses: [],
@@ -30,6 +20,10 @@ class CourseSelector extends Component {
     filterBySubjects: [],
     availableSubjects: [],
     filteredSubjs: [],
+    chosenSubj: -1,
+    subjList: [],
+    chosenCourses: [], //Temporary list of courses before they are added
+    plannedCourses: [], //List of courses added from the valid courses section
   };
   toggleNoPrereqs = () => {
     const noprereqs = this.state.noPrereqs;
@@ -43,22 +37,25 @@ class CourseSelector extends Component {
       }
     );
   };
-
+  chooseSubj = (event, { value }) => {
+    const selSubj = value;
+    this.setState({ chosenSubj: selSubj });
+  };
   closeModal = () => {
     this.setState({ modalOpen: false });
   };
-  addFilterSubj = (event, { value }) => {
-    const subject = this.state.availableSubjects.find(
-      (subj) => subj.value === value
-    );
-    const filterSubjs = this.state.filterBySubjects;
-    filterSubjs.push(subject);
-    const newSubjects = this.state.availableSubjects.filter(
-      (subj) => !filterSubjs.map((subj) => subj.value).includes(subj.value)
-    );
+  displayCourses = () => {
+    const filteredCourses = this.state.courseList
+      .filter((i) => !this.state.allChosenCourses.includes(i.value))
+      .filter((course) => course.subjectId === this.state.chosenSubj);
+    return filteredCourses;
+  };
+  addChosenCourseToTakenList = () => {
+    const chosenCourses = [...this.state.chosenCourses];
+    const takenCourses = [...this.state.selectedCourses];
     this.setState({
-      availableSubjects: newSubjects,
-      filterBySubjects: filterSubjs,
+      chosenCourses: [],
+      selectedCourses: takenCourses.concat(chosenCourses),
     });
   };
   openCourseModal = (course) => {
@@ -104,14 +101,14 @@ class CourseSelector extends Component {
         }
       );
   };
-  getValidCourses = (courseList) => {
+  getValidCourses = () => {
     fetch("http://127.0.0.1:5000/api/v1/resources/getvalidcourses", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        selection: courseList,
+        selection: this.state.allChosenCourses,
         includeNoPrereqs: this.state.noPrereqs,
       }),
     })
@@ -119,7 +116,6 @@ class CourseSelector extends Component {
       .then((result) => {
         this.setState({
           availableCourses: result["availableCourses"],
-          selectedCourses: courseList,
           modalOpen: false,
           availableSubjects: result["subjectList"].map((subject) => {
             const newSubject = {};
@@ -131,16 +127,15 @@ class CourseSelector extends Component {
         });
       });
   };
-
   addCourse = (event, { value }) => {
-    const courseList = [...this.state.selectedCourses];
+    const courseList = [...this.state.chosenCourses];
     courseList.push(value);
-    this.getValidCourses(courseList);
+    const allCourses = [...this.state.allChosenCourses];
+    allCourses.push(value);
+    this.setState({ chosenCourses: courseList, allChosenCourses: allCourses });
   };
   removeCourse = (value) => {
-    const courseList = [
-      ...this.state.selectedCourses.filter((x) => x !== value),
-    ];
+    const courseList = [...this.state.chosenCourses.filter((x) => x !== value)];
     this.getValidCourses(courseList);
   };
 
@@ -153,17 +148,24 @@ class CourseSelector extends Component {
             const newCourse = {};
             newCourse.key = course.courseId;
             newCourse.value = course.courseId;
+            newCourse.subjectId = course.subjectId;
+            newCourse.subject = course.subject;
             newCourse.text =
-              course.subject +
-              " " +
-              course.number.toString() +
-              course.suffix +
-              " - " +
-              course.name;
+              /*course.subject +
+              " " +*/
+              course.number.toString() + course.suffix + " - " + course.name;
             return newCourse;
+          });
+          const subjList = result.allSubjs.map((subj) => {
+            const newSubj = {};
+            newSubj.key = subj.subjectId;
+            newSubj.value = subj.subjectId;
+            newSubj.text = subj.subject;
+            return newSubj;
           });
           this.setState({
             courseList: courseList,
+            subjList: subjList,
           });
         },
         // Note: it's important to handle errors here
@@ -178,27 +180,76 @@ class CourseSelector extends Component {
   render() {
     return (
       <div>
-        <div className="CourseSelect">
-          <div>
+        <div id="CourseLists">
+          <div style={{ width: "40%" }}>
+            <Header as="h3" className="courseListHeader">
+              Choose Courses You've Taken
+            </Header>
+
             <Dropdown
-              placeholder="Search for Courses"
-              fluid
+              style={{ width: "40%" }}
+              placeholder="Choose Subject"
               search
+              selectOnNavigation={false}
+              selection
+              selectOnBlur={false}
+              noResultsMessage="No subjects found"
+              onChange={this.chooseSubj}
+              options={this.state.subjList}
+            />
+
+            <Dropdown
+              style={{ width: "60%" }}
+              placeholder="Search for Courses"
+              search
+              floating
               selectOnNavigation={false}
               selection
               value=""
               selectOnBlur={false}
               noResultsMessage="No courses found"
               onChange={this.addCourse}
-              options={this.state.courseList.filter(
-                (i) => !this.state.selectedCourses.includes(i.value)
+              options={this.displayCourses()}
+            />
+            <CourseList
+              courseList={this.state.courseList.filter((i) =>
+                this.state.chosenCourses.includes(i.value)
               )}
+              removeCourse={this.removeCourse}
+            />
+
+            <Button
+              style={{ display: "block" }}
+              onClick={this.addChosenCourseToTakenList}
+            >
+              Add Course(s)
+            </Button>
+          </div>
+          <div style={{ width: "30%" }}>
+            <Header as="h3" className="courseListHeader">
+              Courses You've Taken
+            </Header>
+
+            <CourseList
+              courseList={this.state.courseList.filter((i) =>
+                this.state.selectedCourses.includes(i.value)
+              )}
+              removeCourse={this.removeCourse}
             />
           </div>
-          <div>
-            <List selection style={{ maxHeight: 150, overflow: "auto" }}>
+          <div style={{ width: "30%" }}>
+            <Header as="h3" className="courseListHeader">
+              Planned Courses
+            </Header>
+            <CourseList
+              courseList={this.state.courseList.filter((i) =>
+                this.state.plannedCourses.includes(i.value)
+              )}
+              removeCourse={this.removeCourse}
+            />
+            {/* <List selection style={{ maxHeight: 150, overflow: "auto" }}>
               {this.state.courseList
-                .filter((i) => this.state.selectedCourses.includes(i.value))
+                .filter((i) => this.state.plannedCourses.includes(i.value))
                 .map((course) => (
                   <List.Item
                     key={course.id}
@@ -206,12 +257,17 @@ class CourseSelector extends Component {
                     onClick={() => this.removeCourse(course.value)}
                   >
                     <List.Content>
-                      <List.Header>{course.text}</List.Header>
+                      <List.Header>
+                        {course.subject + " " + course.text}
+                      </List.Header>
                     </List.Content>
                   </List.Item>
                 ))}
-            </List>
+            </List> */}
           </div>
+        </div>
+        <div className="CourseSelect">
+          <div></div>
         </div>
         <ValidCourses
           availableSubjects={this.state.availableSubjects}

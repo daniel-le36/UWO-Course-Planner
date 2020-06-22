@@ -36,7 +36,16 @@
     transform: rotate(360deg);
   }
 }
-
+#CourseLists {
+  display: flex;
+  /* width: 100%;
+  display: block; */
+}
+#CourseLists > div {
+  /* flex: 1; */
+  /* float: left; */
+  /* width: 20%; */
+}
 .CourseSelect {
   width: 500px;
 }
@@ -49,4 +58,7 @@
 .courseCard {
   min-width: 150px;
   margin-right: 50px !important;
+}
+.courseListHeader {
+  text-align: center;
 }

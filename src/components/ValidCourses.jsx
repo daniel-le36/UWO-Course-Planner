@@ -1,62 +1,7 @@
-import React, { Component } from "react";
-import { Card, Icon, Label } from "semantic-ui-react";
+import React from "react";
+import { Card, Header } from "semantic-ui-react";
 import Filter from "./Filter";
 
-/* class ValidCourses extends Component {
-  constructor(props) {
-    super(props);
-    console.log(this);
-    this.state = {};
-  }
-  componentDidMount() {
-    this.setState({
-      availableSubjects: this.props.availableSubjects,
-      availableCourses: this.props.availableCourses,
-    });
-  }
-  addFilterSubj = (event, { value }) => {
-    console.log(this.state);
-     const subject = subjList.find((subj) => subj.value === value);
-    const subjs = filterSubjs;
-    subjs.push(subject);
-    const newSubjects = subjList.filter(
-      (subj) => !subjs.map((subj) => subj.value).includes(subj.value)
-    );
-    setFilterSubjs(subjs);
-    setSubjList(newSubjects); 
-  };
-
-  render() {
-    return (
-      <div>
-        <div>
-          <Filter
-            subjList={this.props.availableSubjects}
-            filterBySubjects={[]}
-            toggleNoPrereqs={this.props.toggleNoPrereqs}
-            addFilterSubj={this.addFilterSubj}
-            removeFilterSubj={this.props.removeFilterSubj}
-          />
-        </div>
-        <div id="courseResults">
-          {this.props.availableCourses.map((course) => (
-            <Card
-              className="courseCard"
-              header={course.subject + " " + course.number + course.suffix}
-              meta={course.name}
-              description={course.description}
-              link
-              onClick={() => this.props.openCourseModal(course)}
-            />
-          ))}
-        </div>
-      </div>
-    );
-  }
-}
-
-export default ValidCourses;
- */
 function ValidCourses({
   availableSubjects,
   availableCourses,
@@ -104,6 +49,9 @@ function ValidCourses({
   };
   return (
     <div>
+      <Header as="h2" block>
+        Courses You Can Take
+      </Header>
       <div>
         <Filter
           subjList={getFilteredSubjList()}
