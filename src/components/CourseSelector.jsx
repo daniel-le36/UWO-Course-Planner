@@ -53,10 +53,13 @@ class CourseSelector extends Component {
   addChosenCourseToTakenList = () => {
     const chosenCourses = [...this.state.chosenCourses];
     const takenCourses = [...this.state.selectedCourses];
-    this.setState({
-      chosenCourses: [],
-      selectedCourses: takenCourses.concat(chosenCourses),
-    });
+    this.setState(
+      {
+        chosenCourses: [],
+        selectedCourses: takenCourses.concat(chosenCourses),
+      },
+      this.getValidCourses()
+    );
   };
   openCourseModal = (course) => {
     const newCourseData = { ...this.state.modalContent };
@@ -134,9 +137,40 @@ class CourseSelector extends Component {
     allCourses.push(value);
     this.setState({ chosenCourses: courseList, allChosenCourses: allCourses });
   };
-  removeCourse = (value) => {
-    const courseList = [...this.state.chosenCourses.filter((x) => x !== value)];
-    this.getValidCourses(courseList);
+  removeCourse = (value, removeFromList) => {
+    const courseList = [
+      ...this.state.allChosenCourses.filter((x) => x !== value),
+    ];
+    let listToRemoveFrom = [];
+    switch (removeFromList) {
+      case "chosen":
+        listToRemoveFrom = [
+          ...this.state.chosenCourses.filter((x) => x !== value),
+        ];
+        this.setState(
+          { allChosenCourses: courseList, chosenCourses: listToRemoveFrom },
+          this.getValidCourses()
+        );
+        break;
+      case "taken":
+        listToRemoveFrom = [
+          ...this.state.selectedCourses.filter((x) => x !== value),
+        ];
+        this.setState(
+          { allChosenCourses: courseList, selectedCourses: listToRemoveFrom },
+          this.getValidCourses()
+        );
+        break;
+      case "planned":
+        listToRemoveFrom = [
+          ...this.state.plannedCourses.filter((x) => x !== value),
+        ];
+        this.setState(
+          { allChosenCourses: courseList, plannedCourses: listToRemoveFrom },
+          this.getValidCourses()
+        );
+        break;
+    }
   };
 
   componentDidMount() {
@@ -216,6 +250,7 @@ class CourseSelector extends Component {
                 this.state.chosenCourses.includes(i.value)
               )}
               removeCourse={this.removeCourse}
+              removeFromList="chosen"
             />
 
             <Button
@@ -235,6 +270,7 @@ class CourseSelector extends Component {
                 this.state.selectedCourses.includes(i.value)
               )}
               removeCourse={this.removeCourse}
+              removeFromList="taken"
             />
           </div>
           <div style={{ width: "30%" }}>
@@ -246,6 +282,7 @@ class CourseSelector extends Component {
                 this.state.plannedCourses.includes(i.value)
               )}
               removeCourse={this.removeCourse}
+              removeFromList="planned"
             />
             {/* <List selection style={{ maxHeight: 150, overflow: "auto" }}>
               {this.state.courseList

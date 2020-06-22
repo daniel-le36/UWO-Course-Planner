@@ -7,7 +7,7 @@ const CourseList = ({ courseList, removeCourse, removeFromList }) => {
         <List.Item
           key={course.id}
           value={course.value}
-          onClick={() => removeCourse(course.value /*, removeFromList*/)}
+          onClick={() => removeCourse(course.value, removeFromList)}
         >
           <List.Content>
             <List.Header>{course.subject + " " + course.text}</List.Header>
