@@ -12,7 +12,7 @@ const CourseList = ({
       style={{
         overflow: "auto",
         maxHeight: listHeight,
-        minHeight: listHeight /* "150px" */,
+        minHeight: listHeight,
       }}
     >
       {courseList.map((course) => (

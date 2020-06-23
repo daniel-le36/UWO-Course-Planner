@@ -50,12 +50,27 @@
 #addButton {
   background-color: #4f2683;
   color: white;
+  margin-left: 10px;
+}
+#CourseSelection {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 #ValidCourses {
   margin-top: 40px;
 }
+#SubjectFilter {
+  width: 40%;
+  margin-bottom: 10px;
+}
 .CourseSelect {
   width: 500px;
+}
+.courseListNoFilter {
+  width: 30%;
+  margin-left: 10px;
+}
+.courseListWithFilter {
 }
 #courseResults {
   display: flex;

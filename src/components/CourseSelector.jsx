@@ -226,7 +226,7 @@ class CourseSelector extends Component {
 
   render() {
     return (
-      <div>
+      <div id="CourseSelection">
         <div id="CourseListSection">
           <div style={{ width: "40%" }}>
             <Header as="h3" className="courseListHeader">
@@ -236,7 +236,8 @@ class CourseSelector extends Component {
             </Header>
 
             <Dropdown
-              style={{ width: "40%" }}
+              /* style={{ width: "40%" }} */
+              id="SubjectFilter"
               placeholder="Choose Subject"
               search
               selectOnNavigation={false}
@@ -248,7 +249,6 @@ class CourseSelector extends Component {
             />
 
             <Dropdown
-              //style={{ width: "60%" }}
               placeholder="Search for Courses"
               search
               fluid
@@ -278,7 +278,7 @@ class CourseSelector extends Component {
               Add Course(s)
             </Button>
           </div>
-          <div style={{ width: "30%" }}>
+          <div className="courseListNoFilter" /* style={{ width: "30%" }} */>
             <Header as="h3" className="courseListHeader">
               <Header.Content className="titleHeader">
                 Courses You've Taken
@@ -294,7 +294,7 @@ class CourseSelector extends Component {
               listHeight="250px"
             />
           </div>
-          <div style={{ width: "30%" }}>
+          <div className="courseListNoFilter" /* style={{ width: "30%" }} */>
             <Header as="h3" className="courseListHeader">
               <Header.Content className="titleHeader">
                 Planned Courses
