@@ -1,0 +1,1 @@
+SELECT Courses.CourseId,Number,SubjectName,Suffix,Name FROM Antireq JOIN (SELECT CourseId, Subject.Name as SubjectName, Number, Suffix, Course.Name FROM Course JOIN Subject on Course.SubjectId = Subject.SubjectId) as Courses WHERE AntireqCourseId = ?
