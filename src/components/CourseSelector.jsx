@@ -228,11 +228,9 @@ class CourseSelector extends Component {
     return (
       <div id="CourseSelection">
         <div id="CourseListSection">
-          <div style={{ width: "40%" }}>
+          <div className={"courseListNoFilter"} /* style={{ width: "40%" }} */>
             <Header as="h3" className="courseListHeader">
-              <Header.Content className="titleHeader">
-                Choose Courses You've Taken
-              </Header.Content>
+              <Header.Content>Choose Courses You've Taken</Header.Content>
             </Header>
 
             <Dropdown
@@ -280,9 +278,7 @@ class CourseSelector extends Component {
           </div>
           <div className="courseListNoFilter" /* style={{ width: "30%" }} */>
             <Header as="h3" className="courseListHeader">
-              <Header.Content className="titleHeader">
-                Courses You've Taken
-              </Header.Content>
+              <Header.Content>Courses You've Taken</Header.Content>
             </Header>
 
             <CourseList
@@ -296,9 +292,7 @@ class CourseSelector extends Component {
           </div>
           <div className="courseListNoFilter" /* style={{ width: "30%" }} */>
             <Header as="h3" className="courseListHeader">
-              <Header.Content className="titleHeader">
-                Planned Courses
-              </Header.Content>
+              <Header.Content>Planned Courses</Header.Content>
             </Header>
             <CourseList
               courseList={this.state.courseList.filter((i) =>

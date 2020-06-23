@@ -49,7 +49,7 @@ function ValidCourses({
   };
   return (
     <div id="ValidCourses">
-      <Header as="h2" block>
+      <Header as="h2" block id="ValidCoursesHeader">
         <Header.Content className="titleHeader">
           Courses You Can Take
         </Header.Content>

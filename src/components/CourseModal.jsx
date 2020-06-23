@@ -38,7 +38,6 @@ const CourseModal = ({ modalOpen, modalContent, addCourse, closeModal }) => {
         <Button
           value={modalContent.courseData.courseId}
           onClick={addCourse}
-          positive
           content="Add This Course"
         />
       </Modal.Actions>

@@ -8,7 +8,6 @@ const CourseList = ({
 }) => {
   return (
     <List
-      selection
       style={{
         overflow: "auto",
         maxHeight: listHeight,
@@ -19,10 +18,17 @@ const CourseList = ({
         <List.Item
           key={course.id}
           value={course.value}
-          onClick={() => removeCourse(course.value, removeFromList)}
+          className="courseListItem"
         >
           <List.Content>
-            <List.Header>{course.subject + " " + course.text}</List.Header>
+            <List.Header>
+              {course.subject + " " + course.text}{" "}
+              <List.Icon
+                name="cancel"
+                onClick={() => removeCourse(course.value, removeFromList)}
+                color="violet"
+              />
+            </List.Header>
           </List.Content>
         </List.Item>
       ))}

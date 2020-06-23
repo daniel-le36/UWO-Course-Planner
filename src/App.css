@@ -39,18 +39,25 @@
 #title {
   margin-top: 10px;
   margin-left: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 .titleHeader {
   color: #4f2683;
+  /* color: white;
+  padding: 5px 5px 5px 5px; */
 }
+
 #CourseListSection {
   display: flex;
 }
-#addButton {
+.ui.button {
   background-color: #4f2683;
   color: white;
-  margin-left: 10px;
+  /* margin-left: 10px; */
+}
+.ui.button:hover {
+  background-color: #340d66;
+  color: white;
 }
 #CourseSelection {
   margin-left: 20px;
@@ -58,6 +65,12 @@
 }
 #ValidCourses {
   margin-top: 40px;
+}
+#ValidCoursesHeader {
+  background-color: #4f2683;
+}
+#ValidCourses .content {
+  color: white;
 }
 #SubjectFilter {
   width: 40%;
@@ -67,10 +80,11 @@
   width: 500px;
 }
 .courseListNoFilter {
-  width: 30%;
+  width: 33%;
   margin-left: 10px;
 }
-.courseListWithFilter {
+.courseListItem {
+  padding: 7px 7px 7px 7px;
 }
 #courseResults {
   display: flex;
@@ -84,4 +98,25 @@
 }
 .courseListHeader {
   text-align: center;
+  /* background-color: #a294eb; */
+  background-color: #4f2683;
+  border-radius: 5px;
+}
+
+.courseListHeader .content {
+  color: white;
+  padding: 10px 5px 10px 5px;
+  /* font-weight: 550; */
+}
+.ui.list {
+  /* background-color: rgba(79, 38, 131, 0.15); */
+  background-color: rgba(180, 180, 180, 0.1);
+  /* border: lightgray 1px solid; */
+  border-radius: 5px;
+}
+.ui.list > .item {
+  padding: 7px 7px 7px 7px;
+}
+.cancel {
+  cursor: pointer;
 }
