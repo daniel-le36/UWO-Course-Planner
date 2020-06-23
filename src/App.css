@@ -36,15 +36,23 @@
     transform: rotate(360deg);
   }
 }
-#CourseLists {
-  display: flex;
-  /* width: 100%;
-  display: block; */
+#title {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 30px;
 }
-#CourseLists > div {
-  /* flex: 1; */
-  /* float: left; */
-  /* width: 20%; */
+.titleHeader {
+  color: #4f2683;
+}
+#CourseListSection {
+  display: flex;
+}
+#addButton {
+  background-color: #4f2683;
+  color: white;
+}
+#ValidCourses {
+  margin-top: 40px;
 }
 .CourseSelect {
   width: 500px;

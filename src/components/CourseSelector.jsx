@@ -137,6 +137,19 @@ class CourseSelector extends Component {
     allCourses.push(value);
     this.setState({ chosenCourses: courseList, allChosenCourses: allCourses });
   };
+  addPlannedCourse = (event, { value }) => {
+    console.log(value);
+    const courseList = [...this.state.plannedCourses];
+    courseList.push(value);
+    const allCourses = [...this.state.allChosenCourses];
+    allCourses.push(value);
+    this.setState(
+      { plannedCourses: courseList, allChosenCourses: allCourses },
+      () => {
+        this.getValidCourses();
+      }
+    );
+  };
   removeCourse = (value, removeFromList) => {
     const courseList = [
       ...this.state.allChosenCourses.filter((x) => x !== value),
@@ -214,10 +227,12 @@ class CourseSelector extends Component {
   render() {
     return (
       <div>
-        <div id="CourseLists">
+        <div id="CourseListSection">
           <div style={{ width: "40%" }}>
             <Header as="h3" className="courseListHeader">
-              Choose Courses You've Taken
+              <Header.Content className="titleHeader">
+                Choose Courses You've Taken
+              </Header.Content>
             </Header>
 
             <Dropdown
@@ -233,9 +248,10 @@ class CourseSelector extends Component {
             />
 
             <Dropdown
-              style={{ width: "60%" }}
+              //style={{ width: "60%" }}
               placeholder="Search for Courses"
               search
+              fluid
               floating
               selectOnNavigation={false}
               selection
@@ -251,9 +267,11 @@ class CourseSelector extends Component {
               )}
               removeCourse={this.removeCourse}
               removeFromList="chosen"
+              listHeight="150px"
             />
 
             <Button
+              id="addButton"
               style={{ display: "block" }}
               onClick={this.addChosenCourseToTakenList}
             >
@@ -262,7 +280,9 @@ class CourseSelector extends Component {
           </div>
           <div style={{ width: "30%" }}>
             <Header as="h3" className="courseListHeader">
-              Courses You've Taken
+              <Header.Content className="titleHeader">
+                Courses You've Taken
+              </Header.Content>
             </Header>
 
             <CourseList
@@ -271,11 +291,14 @@ class CourseSelector extends Component {
               )}
               removeCourse={this.removeCourse}
               removeFromList="taken"
+              listHeight="250px"
             />
           </div>
           <div style={{ width: "30%" }}>
             <Header as="h3" className="courseListHeader">
-              Planned Courses
+              <Header.Content className="titleHeader">
+                Planned Courses
+              </Header.Content>
             </Header>
             <CourseList
               courseList={this.state.courseList.filter((i) =>
@@ -283,29 +306,11 @@ class CourseSelector extends Component {
               )}
               removeCourse={this.removeCourse}
               removeFromList="planned"
+              listHeight="250px"
             />
-            {/* <List selection style={{ maxHeight: 150, overflow: "auto" }}>
-              {this.state.courseList
-                .filter((i) => this.state.plannedCourses.includes(i.value))
-                .map((course) => (
-                  <List.Item
-                    key={course.id}
-                    value={course.value}
-                    onClick={() => this.removeCourse(course.value)}
-                  >
-                    <List.Content>
-                      <List.Header>
-                        {course.subject + " " + course.text}
-                      </List.Header>
-                    </List.Content>
-                  </List.Item>
-                ))}
-            </List> */}
           </div>
         </div>
-        <div className="CourseSelect">
-          <div></div>
-        </div>
+
         <ValidCourses
           availableSubjects={this.state.availableSubjects}
           availableCourses={this.state.availableCourses}
@@ -315,7 +320,7 @@ class CourseSelector extends Component {
         <CourseModal
           modalOpen={this.state.modalOpen}
           modalContent={this.state.modalContent}
-          addCourse={this.addCourse}
+          addCourse={this.addPlannedCourse}
           closeModal={this.closeModal}
         />
       </div>

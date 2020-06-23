@@ -7,22 +7,17 @@ function Filter({
   addFilterSubj,
   removeFilterSubj,
 }) {
-  /* const [open, setOpen] = React.useState(filterBySubjects);
-  const close = () => {
-    setOpen([]);
-  }; */
   return (
     <Form>
       <Form.Group>
         <Form.Dropdown
           placeholder="Filter by Subjects"
-          fluid
           search
           selectOnNavigation={false}
           selection
           value=""
           selectOnBlur={false}
-          noResultsMessage="No courses found"
+          noResultsMessage="No subjects found"
           onChange={addFilterSubj}
           options={subjList}
         ></Form.Dropdown>

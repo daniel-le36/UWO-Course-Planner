@@ -1,8 +1,20 @@
 import React from "react";
 import { List } from "semantic-ui-react";
-const CourseList = ({ courseList, removeCourse, removeFromList }) => {
+const CourseList = ({
+  courseList,
+  removeCourse,
+  removeFromList,
+  listHeight,
+}) => {
   return (
-    <List selection style={{ maxHeight: 150, overflow: "auto" }}>
+    <List
+      selection
+      style={{
+        overflow: "auto",
+        maxHeight: listHeight,
+        minHeight: listHeight /* "150px" */,
+      }}
+    >
       {courseList.map((course) => (
         <List.Item
           key={course.id}
