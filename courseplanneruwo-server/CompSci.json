@@ -1,1 +1,1518 @@
-{ "courseList": [{}] }
+{
+  "courseList": [
+    {
+      "department": "Computer Science",
+      "code": 1011,
+      "prereq_list": []
+    },
+    {
+      "department": "Computer Science",
+      "code": 1025,
+      "prereq_list": []
+    },
+    {
+      "department": "Computer Science",
+      "code": 1026,
+      "prereq_list": []
+    },
+    {
+      "department": "Computer Science",
+      "code": 1027,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 1025 },
+                { "department": "Computer Science", "code": 1026 },
+                { "department": "Engineering Science", "code": 1036 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 1032,
+      "prereq_list": []
+    },
+    {
+      "department": "Computer Science",
+      "code": 1033,
+      "prereq_list": []
+    },
+    {
+      "department": "Computer Science",
+      "code": 1037,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Engineering Science", "code": 1036 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 1046,
+      "prereq_list": []
+    },
+    {
+      "department": "Computer Science",
+      "code": 2033,
+      "prereq_list": []
+    },
+    {
+      "department": "Computer Science",
+      "code": 2034,
+      "prereq_list": []
+    },
+    {
+      "department": "Computer Science",
+      "code": 2035,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "subjects": [
+                { "subject": "Applied Mathematics", "year": 1 },
+                { "subject": "Calculus", "year": 1 },
+                { "subject": "Mathematics", "year": 1 },
+                { "subject": "Statistical Sciences", "year": 1 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 2050,
+      "prereq_list": []
+    },
+    {
+      "department": "Computer Science",
+      "code": 2101,
+      "prereq_list": []
+    },
+    {
+      "department": "Computer Science",
+      "code": 2120,
+      "prereq_list": []
+    },
+    {
+      "department": "Computer Science",
+      "code": 2121,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 2120 },
+                { "department": "Digital Humanities", "code": 2220 },
+                { "department": "Integrated Science", "code": 1001 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 2124,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 1,
+              "courses": [
+                { "department": "Calculus", "code": 1000 },
+                { "department": "Calculus", "code": 1301 },
+                { "department": "Calculus", "code": 1500 },
+                { "department": "Calculus", "code": 1501 },
+                { "department": "Mathematics", "code": 1225 },
+                { "department": "Mathematics", "code": 1228 },
+                { "department": "Mathematics", "code": 1229 },
+                { "department": "Mathematics", "code": 1600 },
+                { "department": "Statistical Sciences", "code": 1024 },
+                { "department": "Applied Mathematics", "code": 1201 },
+                { "department": "Applied Mathematics", "code": 1413 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 2125,
+      "prereq_list": []
+    },
+    {
+      "department": "Computer Science",
+      "code": 2208,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 1027 },
+                { "department": "Computer Science", "code": 1037 },
+                { "department": "Computer Science", "code": 2101 },
+                { "department": "Integrated Science", "code": 1001 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 2209,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 1027 },
+                { "department": "Computer Science", "code": 1037 },
+                { "department": "Computer Science", "code": 2101 },
+                { "department": "Computer Science", "code": 2121 },
+                { "department": "Digital Humanities", "code": 2221 }
+              ]
+            },
+            {
+              "value": 1,
+              "courses": [
+                { "department": "Calculus", "code": 1000 },
+                { "department": "Calculus", "code": 1301 },
+                { "department": "Calculus", "code": 1500 },
+                { "department": "Calculus", "code": 1501 },
+                { "department": "Mathematics", "code": 1600 },
+                { "department": "Applied Mathematics", "code": 1201 },
+                { "department": "Applied Mathematics", "code": 1413 }
+              ]
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Integrated Science", "code": 1001 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 2210,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 1027 },
+                { "department": "Computer Science", "code": 1037 },
+                { "department": "Computer Science", "code": 2101 },
+                { "department": "Computer Science", "code": 2121 },
+                { "department": "Digital Humanities", "code": 2221 }
+              ]
+            },
+            {
+              "value": 1,
+              "courses": [
+                { "department": "Calculus", "code": 1000 },
+                { "department": "Calculus", "code": 1301 },
+                { "department": "Calculus", "code": 1500 },
+                { "department": "Calculus", "code": 1501 },
+                { "department": "Mathematics", "code": 1600 },
+                { "department": "Applied Mathematics", "code": 1201 },
+                { "department": "Applied Mathematics", "code": 1413 }
+              ]
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Integrated Science", "code": 1001 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 2211,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 1027 },
+                { "department": "Computer Science", "code": 1037 },
+                { "department": "Computer Science", "code": 2101 },
+                { "department": "Integrated Science", "code": 1001 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 2212,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2210 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2211 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 2214,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 1027 },
+                { "department": "Computer Science", "code": 1037 },
+                { "department": "Computer Science", "code": 2101 }
+              ]
+            },
+            {
+              "value": 1,
+              "courses": [
+                { "department": "Calculus", "code": 1000 },
+                { "department": "Calculus", "code": 1301 },
+                { "department": "Calculus", "code": 1500 },
+                { "department": "Calculus", "code": 1501 },
+                { "department": "Mathematics", "code": 1600 },
+                { "department": "Applied Mathematics", "code": 1201 },
+                { "department": "Applied Mathematics", "code": 1413 }
+              ]
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Integrated Science", "code": 1001 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3101,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 2101 },
+                { "department": "Computer Science", "code": 2211 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3120,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 2121 },
+                { "department": "Digital Humanities", "code": 2221 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3121,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2121 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3305,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2211 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2208 }]
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2101 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2208 }]
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2210 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2211 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                {
+                  "department": "Electrical and Computer Engineering",
+                  "code": 3375
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3307,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2212 }]
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2210 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2211 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                {
+                  "department": "Electrical and Computer Engineering",
+                  "code": 3375
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3319,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2210 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2211 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3331,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 2210 },
+                { "department": "Mathematics", "code": 2155 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3333,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2208 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2209 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2212 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3335,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2208 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2209 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2212 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3336,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2208 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2209 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2212 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3340,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2210 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2211 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 2214 },
+                { "department": "Mathematics", "code": 2155 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3342,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 2208 },
+                { "department": "Software Engineering", "code": 3313 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3346,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2210 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2211 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2209 }]
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Software Engineering", "code": 2203 }
+              ]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Software Engineering", "code": 2205 }
+              ]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Software Engineering", "code": 2250 }
+              ]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2209 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3350,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2208 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2210 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2211 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 2209 },
+                { "department": "Computer Science", "code": 2101 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3357,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2210 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2211 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3377,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2212 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3380,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 2212 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 3388,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 2211 },
+                { "department": "Computer Science", "code": 2101 }
+              ]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Mathematics", "code": 1600 },
+                { "department": "Applied Mathematics", "code": 1411 }
+              ]
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Software Engineering", "code": 2203 }
+              ]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Software Engineering", "code": 2205 }
+              ]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Software Engineering", "code": 2250 }
+              ]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Mathematics", "code": 1600 },
+                { "department": "Applied Mathematics", "code": 1411 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4402,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3305 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3357 }]
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Software Engineering", "code": 3313 }
+              ]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                {
+                  "department": "Electrical and Computer Engineering",
+                  "code": 4436
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4411,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 3319 },
+                { "department": "Computer Science", "code": 3120 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4413,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3340 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4414,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Biology", "code": 2244 },
+                { "department": "Statistical Sciences", "code": 2035 },
+                { "department": "Statistical Sciences", "code": 2143 },
+                { "department": "Statistical Sciences", "code": 2244 },
+                { "department": "Statistical Sciences", "code": 2858 }
+              ]
+            },
+            {
+              "value": 1,
+              "courses": [
+                { "department": "Computer Science", "code": 1025 },
+                { "department": "Computer Science", "code": 1026 },
+                { "department": "Computer Science", "code": 1027 },
+                { "department": "Computer Science", "code": 1037 },
+                { "department": "Computer Science", "code": 2120 },
+                { "department": "Computer Science", "code": 2121 },
+                { "department": "Digital Humanities", "code": 2220 },
+                { "department": "Digital Humanities", "code": 2221 },
+                { "department": "Engineering Science", "code": 1036 }
+              ]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Mathematics", "code": 1229 },
+                { "department": "Mathematics", "code": 1600 },
+                { "department": "Applied Mathematics", "code": 1411 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4416,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 4414 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4417,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3319 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4418,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 4414 },
+                { "department": "Computer Science", "code": 4416 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4433,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 2,
+              "courses": [
+                { "department": "Computer Science", "code": 3305 },
+                { "department": "Computer Science", "code": 3307 },
+                { "department": "Computer Science", "code": 3331 },
+                { "department": "Computer Science", "code": 3340 },
+                { "department": "Computer Science", "code": 3342 },
+                { "department": "Computer Science", "code": 3350 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4434,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 2,
+              "courses": [
+                { "department": "Computer Science", "code": 3305 },
+                { "department": "Computer Science", "code": 3307 },
+                { "department": "Computer Science", "code": 3331 },
+                { "department": "Computer Science", "code": 3340 },
+                { "department": "Computer Science", "code": 3342 },
+                { "department": "Computer Science", "code": 3350 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4435,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 2,
+              "courses": [
+                { "department": "Computer Science", "code": 3305 },
+                { "department": "Computer Science", "code": 3307 },
+                { "department": "Computer Science", "code": 3331 },
+                { "department": "Computer Science", "code": 3340 },
+                { "department": "Computer Science", "code": 3342 },
+                { "department": "Computer Science", "code": 3350 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4436,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 2,
+              "courses": [
+                { "department": "Computer Science", "code": 3305 },
+                { "department": "Computer Science", "code": 3307 },
+                { "department": "Computer Science", "code": 3331 },
+                { "department": "Computer Science", "code": 3340 },
+                { "department": "Computer Science", "code": 3342 },
+                { "department": "Computer Science", "code": 3350 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4437,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 2,
+              "courses": [
+                { "department": "Computer Science", "code": 3305 },
+                { "department": "Computer Science", "code": 3307 },
+                { "department": "Computer Science", "code": 3331 },
+                { "department": "Computer Science", "code": 3340 },
+                { "department": "Computer Science", "code": 3342 },
+                { "department": "Computer Science", "code": 3350 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4438,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 2,
+              "courses": [
+                { "department": "Computer Science", "code": 3305 },
+                { "department": "Computer Science", "code": 3307 },
+                { "department": "Computer Science", "code": 3331 },
+                { "department": "Computer Science", "code": 3340 },
+                { "department": "Computer Science", "code": 3342 },
+                { "department": "Computer Science", "code": 3350 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4442,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Mathematics", "code": 1600 },
+                { "department": "Applied Mathematics", "code": 1411 }
+              ]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 3307 },
+                { "department": "Software Engineering", "code": 3350 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4445,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3340 }]
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Software Engineering", "code": 2205 }
+              ]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Software Engineering", "code": 3310 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4447,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3331 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3342 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4457,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3357 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4460,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 3331 },
+                { "department": "Computer Science", "code": 3340 }
+              ]
+            },
+            {
+              "value": 1.5,
+              "courses": [
+                { "department": "Biochemistry", "code": 2280 },
+                { "department": "Chemistry", "code": 2213 },
+                { "department": "Computer Science", "code": 3319 },
+                { "department": "Computer Science", "code": 3346 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4461,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 3331 },
+                { "department": "Computer Science", "code": 3340 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4463,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 3331 },
+                { "department": "Computer Science", "code": 3340 }
+              ]
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Software Engineering", "code": 2205 },
+                { "department": "Software Engineering", "code": 3310 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4470,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3307 }]
+            },
+            {
+              "value": 1.5,
+              "courses": [
+                { "department": "Computer Science", "code": 3305 },
+                { "department": "Computer Science", "code": 3331 },
+                { "department": "Computer Science", "code": 3340 },
+                { "department": "Computer Science", "code": 3342 },
+                { "department": "Computer Science", "code": 3350 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4471,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3307 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4472,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3307 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4473,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3307 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4474,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3307 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4475,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3307 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4476,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3307 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4478,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3307 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4480,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 4482 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 4483 }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4481,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 3305 },
+                { "department": "Computer Science", "code": 3307 },
+                { "department": "Computer Science", "code": 3342 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4482,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3305 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3307 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3340 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Mathematics", "code": 1600 },
+                { "department": "Applied Mathematics", "code": 1411 }
+              ]
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Software Engineering", "code": 2205 }
+              ]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Software Engineering", "code": 3310 }
+              ]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Software Engineering", "code": 3313 }
+              ]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Mathematics", "code": 1600 },
+                { "department": "Applied Mathematics", "code": 1411 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4483,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Computer Science", "code": 3307 },
+                { "department": "Software Engineering", "code": 3350 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4487,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Computer Science", "code": 3340 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [{ "department": "Mathematics", "code": 1600 }]
+            },
+            {
+              "value": 0.5,
+              "courses": [
+                { "department": "Applied Mathematics", "code": 1201 },
+                { "department": "Calculus", "code": 1301 },
+                { "department": "Calculus", "code": 1501 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department": "Computer Science",
+      "code": 4490,
+      "prereq_list": [
+        {
+          "conditions": [
+            {
+              "value": 2,
+              "courses": [
+                { "department": "Computer Science", "code": 3305 },
+                { "department": "Computer Science", "code": 3307 },
+                { "department": "Computer Science", "code": 3331 },
+                { "department": "Computer Science", "code": 3340 },
+                { "department": "Computer Science", "code": 3350 }
+              ]
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "value": 2,
+              "courses": [
+                { "department": "Computer Science", "code": 3305 },
+                { "department": "Computer Science", "code": 3307 },
+                { "department": "Computer Science", "code": 3319 },
+                { "department": "Computer Science", "code": 3331 },
+                { "department": "Computer Science", "code": 3340 },
+                { "department": "Computer Science", "code": 3357 }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
