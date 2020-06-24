@@ -13,6 +13,7 @@ const CourseList = ({
         maxHeight: listHeight,
         minHeight: listHeight,
       }}
+      className="courseListBox"
     >
       {courseList.map((course) => (
         <List.Item

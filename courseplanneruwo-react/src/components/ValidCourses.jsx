@@ -63,7 +63,7 @@ function ValidCourses({
           removeFilterSubj={removeFilterSubj}
         />
       </div>
-      <div id="courseResults">
+      <div id="courseResults" className="ui cards">
         {getFilteredCourses().map((course) => (
           <Card
             className="courseCard"

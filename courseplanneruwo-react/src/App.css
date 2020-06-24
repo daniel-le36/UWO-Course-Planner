@@ -108,7 +108,7 @@
   padding: 10px 5px 10px 5px;
   /* font-weight: 550; */
 }
-.ui.list {
+.ui.list.courseListBox {
   /* background-color: rgba(79, 38, 131, 0.15); */
   background-color: rgba(180, 180, 180, 0.1);
   /* border: lightgray 1px solid; */

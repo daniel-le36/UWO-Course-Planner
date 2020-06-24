@@ -36,7 +36,6 @@ function Filter({
           label="Include courses with no prerequisites"
           onChange={toggleNoPrereqs}
         />
-        <Form.Checkbox toggle label="Show only essay courses" />
       </Form.Group>
     </Form>
   );
