@@ -204,29 +204,47 @@ class Course:
         self.name = name
         self.description=description
 
-with open("CompSci.json", "r") as data_json:
-   data = json.load(data_json)
-   prereqDetailId = 0
-   prereqList = []
-   for course in data['courseList']:
-       courseId = getCourseId(getSubjectId(course['department']),course['code'])
-       if len(course['prereq_list']) == 0:
-           addPrereq(courseId,0)
-       else:
-           for prereq in course['prereq_list']:
-               prereqId = addPrereq(courseId,len(prereq['conditions']))
-               for condition in prereq['conditions']:
-                   prereqDetailId += 1
-                   val = condition['value']
-                   if 'subjects' in condition:
-                       for subject in condition['subjects']:
-                           for i in range(subject['year'],5):
-                               newPrereqDetail = (prereqDetailId,None,getSubjectId(subject['subject']),None,None,val,i,prereqId)
+def loadPrereqs():
+    with open("CompSci.json", "r") as data_json:
+       data = json.load(data_json)
+       prereqDetailId = 0
+       prereqList = []
+       for course in data['courseList']:
+           courseId = getCourseId(getSubjectId(course['department']),course['code'])
+           if len(course['prereq_list']) == 0:
+               addPrereq(courseId,0)
+           else:
+               for prereq in course['prereq_list']:
+                   prereqId = addPrereq(courseId,len(prereq['conditions']))
+                   for condition in prereq['conditions']:
+                       prereqDetailId += 1
+                       val = condition['value']
+                       if 'subjects' in condition:
+                           for subject in condition['subjects']:
+                               for i in range(subject['year'],5):
+                                   newPrereqDetail = (prereqDetailId,None,getSubjectId(subject['subject']),None,None,val,i,prereqId)
+                                   prereqList.append(newPrereqDetail)
+                       if 'courses' in condition:
+                           for course in condition['courses']:
+                               newPrereqDetail = (prereqDetailId,getCourseId(getSubjectId(course['department']),course['code']),None,None,None,val,None,prereqId)
                                prereqList.append(newPrereqDetail)
-                   if 'courses' in condition:
-                       for course in condition['courses']:
-                           newPrereqDetail = (prereqDetailId,getCourseId(getSubjectId(course['department']),course['code']),None,None,None,val,None,prereqId)
-                           prereqList.append(newPrereqDetail)
+                   
+       addPrereqDetails(prereqList)
+
+def antireqJson():
+     with open("CompSci.json", "r") as data_json:
+       data = json.load(data_json)
+       antireqList = []
+       for course in data['courseList']:
+           courseId = getCourseId(getSubjectId(course['department']),course['code'])
+           if 'antireq_list' in course:
+               for antireq in course['antireq_list']:
+                   newAntireq = (courseId, getCourseId(getSubjectId(antireq['department']),antireq['code']))
+                   antireqList.append(newAntireq)
+       conn = sqlite3.connect('CourseHelper.db')
+       c = conn.cursor()
+       c.executemany("INSERT INTO Antireq VALUES (NULL,?,?)",antireqList)
+       conn.commit()
+       conn.close()
+antireqJson()
                
-   addPrereqDetails(prereqList)
-       

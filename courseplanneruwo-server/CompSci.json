@@ -8,12 +8,24 @@
     {
       "department": "Computer Science",
       "code": 1025,
-      "prereq_list": []
+      "prereq_list": [],
+      "antireq_list": [
+        { "department": "Computer Science", "code": 1026 },
+        { "department": "Computer Science", "code": 2120 },
+        { "department": "Engineering Science", "code": 1036 },
+        { "department": "Digital Humanities", "code": 2220 }
+      ]
     },
     {
       "department": "Computer Science",
       "code": 1026,
-      "prereq_list": []
+      "prereq_list": [],
+      "antireq_list": [
+        { "department": "Computer Science", "code": 1025 },
+        { "department": "Computer Science", "code": 2120 },
+        { "department": "Engineering Science", "code": 1036 },
+        { "department": "Digital Humanities", "code": 2220 }
+      ]
     },
     {
       "department": "Computer Science",
@@ -31,12 +43,20 @@
             }
           ]
         }
+      ],
+      "antireq_list": [
+        { "department": "Computer Science", "code": 1037 },
+        { "department": "Computer Science", "code": 2121 },
+        { "department": "Digital Humanities", "code": 2221 }
       ]
     },
     {
       "department": "Computer Science",
       "code": 1032,
-      "prereq_list": []
+      "prereq_list": [],
+      "antireq_list": [
+        { "department": "Management and Organizational Studies", "code": 1033 }
+      ]
     },
     {
       "department": "Computer Science",
@@ -55,12 +75,24 @@
             }
           ]
         }
+      ],
+      "antireq_list": [
+        { "department": "Computer Science", "code": 1027 },
+        { "department": "Computer Science", "code": 2121 },
+        { "department": "Digital Humanities", "code": 2221 }
       ]
     },
     {
       "department": "Computer Science",
       "code": 1046,
-      "prereq_list": []
+      "prereq_list": [],
+      "antireq_list": [
+        { "department": "Computer Science", "code": 1025 },
+        { "department": "Computer Science", "code": 1026 },
+        { "department": "Computer Science", "code": 2120 },
+        { "department": "Engineering Science", "code": 1036 },
+        { "department": "Software Engineering", "code": 2202 }
+      ]
     },
     {
       "department": "Computer Science",
@@ -70,7 +102,11 @@
     {
       "department": "Computer Science",
       "code": 2034,
-      "prereq_list": []
+      "prereq_list": [],
+      "antireq_list": [
+        { "department": "Digital Humanities", "code": 2144 },
+        { "department": "Earth Sciences", "code": 2222 }
+      ]
     },
     {
       "department": "Computer Science",
@@ -89,7 +125,8 @@
             }
           ]
         }
-      ]
+      ],
+      "antireq_list": [{ "department": "Earth Sciences", "code": 2222 }]
     },
     {
       "department": "Computer Science",
@@ -104,7 +141,13 @@
     {
       "department": "Computer Science",
       "code": 2120,
-      "prereq_list": []
+      "prereq_list": [],
+      "antireq_list": [
+        { "department": "Computer Science", "code": 1025 },
+        { "department": "Computer Science", "code": 1026 },
+        { "department": "Engineering Science", "code": 1036 },
+        { "department": "Digital Humanities", "code": 2220 }
+      ]
     },
     {
       "department": "Computer Science",
@@ -122,6 +165,11 @@
             }
           ]
         }
+      ],
+      "antireq_list": [
+        { "department": "Computer Science", "code": 1027 },
+        { "department": "Computer Science", "code": 1037 },
+        { "department": "Digital Humanities", "code": 2221 }
       ]
     },
     {
@@ -148,12 +196,14 @@
             }
           ]
         }
-      ]
+      ],
+      "antireq_list": [{ "department": "Computer Science", "code": 2125 }]
     },
     {
       "department": "Computer Science",
       "code": 2125,
-      "prereq_list": []
+      "prereq_list": [],
+      "antireq_list": [{ "department": "Computer Science", "code": 2124 }]
     },
     {
       "department": "Computer Science",
@@ -252,7 +302,8 @@
             }
           ]
         }
-      ]
+      ],
+      "antireq_list": [{ "department": "Software Engineering", "code": 2205 }]
     },
     {
       "department": "Computer Science",
@@ -289,7 +340,8 @@
             }
           ]
         }
-      ]
+      ],
+      "antireq_list": [{ "department": "Software Engineering", "code": 2203 }]
     },
     {
       "department": "Computer Science",
@@ -327,6 +379,10 @@
             }
           ]
         }
+      ],
+      "antireq_list": [
+        { "department": "Mathematics", "code": 2151 },
+        { "department": "Mathematics", "code": 2155 }
       ]
     },
     {
@@ -361,6 +417,11 @@
             }
           ]
         }
+      ],
+      "antireq_list": [
+        { "department": "Computer Science", "code": 3319 },
+        { "department": "Digital Humanities", "code": 3220 },
+        { "department": "Software Engineering", "code": 3309 }
       ]
     },
     {
@@ -375,7 +436,8 @@
             }
           ]
         }
-      ]
+      ],
+      "antireq_list": [{ "department": "Computer Science", "code": 3346 }]
     },
     {
       "department": "Computer Science",
@@ -426,7 +488,8 @@
             }
           ]
         }
-      ]
+      ],
+      "antireq_list": [{ "department": "Software Engineering", "code": 3313 }]
     },
     {
       "department": "Computer Science",
@@ -461,7 +524,8 @@
             }
           ]
         }
-      ]
+      ],
+      "antireq_list": [{ "department": "Software Engineering", "code": 3350 }]
     },
     {
       "department": "Computer Science",
@@ -479,6 +543,11 @@
             }
           ]
         }
+      ],
+      "antireq_list": [
+        { "department": "Computer Science", "code": 3120 },
+        { "department": "Digital Humanities", "code": 3220 },
+        { "department": "Software Engineering", "code": 3309 }
       ]
     },
     {
@@ -652,7 +721,8 @@
             }
           ]
         }
-      ]
+      ],
+      "antireq_list": [{ "department": "Computer Science", "code": 3121 }]
     },
     {
       "department": "Computer Science",
@@ -681,6 +751,9 @@
             }
           ]
         }
+      ],
+      "antireq_list": [
+        { "department": "Electrical and Computer Engineering", "code": 3375 }
       ]
     },
     {
@@ -699,6 +772,9 @@
             }
           ]
         }
+      ],
+      "antireq_list": [
+        { "department": "Electrical and Computer Engineering", "code": 4436 }
       ]
     },
     {
@@ -713,6 +789,10 @@
             }
           ]
         }
+      ],
+      "antireq_list": [
+        { "department": "Software Engineering", "code": 3351 },
+        { "department": "Science", "code": 3377 }
       ]
     },
     {
@@ -727,6 +807,12 @@
             }
           ]
         }
+      ],
+      "antireq_list": [
+        { "department": "Computer Science", "code": 4460 },
+        { "department": "Computer Science", "code": 4470 },
+        { "department": "Computer Science", "code": 4480 },
+        { "department": "Computer Science", "code": 4490 }
       ]
     },
     {
@@ -890,7 +976,8 @@
             }
           ]
         }
-      ]
+      ],
+      "antireq_list": [{ "department": "Computer Science", "code": 4437 }]
     },
     {
       "department": "Computer Science",
@@ -918,7 +1005,8 @@
             }
           ]
         }
-      ]
+      ],
+      "antireq_list": [{ "department": "Computer Science", "code": 4433 }]
     },
     {
       "department": "Computer Science",
@@ -1173,6 +1261,12 @@
             }
           ]
         }
+      ],
+      "antireq_list": [
+        { "department": "Computer Science", "code": 3380 },
+        { "department": "Computer Science", "code": 4470 },
+        { "department": "Computer Science", "code": 4480 },
+        { "department": "Computer Science", "code": 4490 }
       ]
     },
     {
@@ -1242,6 +1336,12 @@
             }
           ]
         }
+      ],
+      "antireq_list": [
+        { "department": "Computer Science", "code": 3380 },
+        { "department": "Computer Science", "code": 4460 },
+        { "department": "Computer Science", "code": 4480 },
+        { "department": "Computer Science", "code": 4490 }
       ]
     },
     {
@@ -1270,7 +1370,8 @@
             }
           ]
         }
-      ]
+      ],
+      "antireq_list": [{ "department": "Software Engineering", "code": 4452 }]
     },
     {
       "department": "Computer Science",
@@ -1284,7 +1385,8 @@
             }
           ]
         }
-      ]
+      ],
+      "antireq_list": [{ "department": "Software Engineering", "code": 3352 }]
     },
     {
       "department": "Computer Science",
@@ -1298,7 +1400,8 @@
             }
           ]
         }
-      ]
+      ],
+      "antireq_list": [{ "department": "Software Engineering", "code": 3353 }]
     },
     {
       "department": "Computer Science",
@@ -1312,7 +1415,8 @@
             }
           ]
         }
-      ]
+      ],
+      "antireq_list": [{ "department": "Computer Science", "code": 4438 }]
     },
     {
       "department": "Computer Science",
@@ -1326,7 +1430,8 @@
             }
           ]
         }
-      ]
+      ],
+      "antireq_list": [{ "department": "Computer Science", "code": 4437 }]
     },
     {
       "department": "Computer Science",
@@ -1340,7 +1445,8 @@
             }
           ]
         }
-      ]
+      ],
+      "antireq_list": [{ "department": "Computer Science", "code": 4434 }]
     },
     {
       "department": "Computer Science",
@@ -1358,6 +1464,12 @@
             }
           ]
         }
+      ],
+      "antireq_list": [
+        { "department": "Computer Science", "code": 3380 },
+        { "department": "Computer Science", "code": 4460 },
+        { "department": "Computer Science", "code": 4470 },
+        { "department": "Computer Science", "code": 4490 }
       ]
     },
     {
@@ -1512,6 +1624,12 @@
             }
           ]
         }
+      ],
+      "antireq_list": [
+        { "department": "Computer Science", "code": 3380 },
+        { "department": "Computer Science", "code": 4460 },
+        { "department": "Computer Science", "code": 4470 },
+        { "department": "Computer Science", "code": 4480 }
       ]
     }
   ]
