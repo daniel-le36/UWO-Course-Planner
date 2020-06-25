@@ -160,10 +160,10 @@ class CourseSelector extends Component {
         listToRemoveFrom = [
           ...this.state.chosenCourses.filter((x) => x !== value),
         ];
-        this.setState(
-          { allChosenCourses: courseList, chosenCourses: listToRemoveFrom },
-          this.getValidCourses()
-        );
+        this.setState({
+          allChosenCourses: courseList,
+          chosenCourses: listToRemoveFrom,
+        });
         break;
       case "taken":
         listToRemoveFrom = [
@@ -171,7 +171,9 @@ class CourseSelector extends Component {
         ];
         this.setState(
           { allChosenCourses: courseList, selectedCourses: listToRemoveFrom },
-          this.getValidCourses()
+          () => {
+            this.getValidCourses();
+          }
         );
         break;
       case "planned":
@@ -180,7 +182,9 @@ class CourseSelector extends Component {
         ];
         this.setState(
           { allChosenCourses: courseList, plannedCourses: listToRemoveFrom },
-          this.getValidCourses()
+          () => {
+            this.getValidCourses();
+          }
         );
         break;
     }
