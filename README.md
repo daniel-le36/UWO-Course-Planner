@@ -1,6 +1,6 @@
 # UWO Course Planner
 
-Web application for helping Western University students find out exactly what courses they have the prerequisites for. This way, they can search for courses to take without needing to continually verify if they meet the prerequisites or have antirequisites.
+Web application for helping Western University students find out exactly what courses they have the prerequisites for. This way, they can search for courses to take without needing to continually verify if they meet the prerequisites or have antirequisites. To check out this project on my website, click [here](https://ledanieldevel.wordpress.com/western-course-planner)
 
 ## Getting Started
 
