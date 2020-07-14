@@ -58,11 +58,10 @@ def getAntireqs(courseId):
     return [ob.__dict__ for ob in courseList]
 @app.route('/', methods=['GET'])
 def home():
-    return '''<h1>Distant Reading Archive</h1>
-<p>A prototype API for distant reading of science fiction novels.</p>'''
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
 
 
-@app.route('/api/v1/resources/courses', methods=['GET'])
+@app.route('/courses', methods=['GET'])
 @cross_origin()
 def getCourses():
     conn = sqlite3.connect('CourseHelper.db')
@@ -80,7 +79,8 @@ def getCourses():
     return {"allCourses": allCourses,"allSubjs":allSubjs}
 
 
-@app.route('/api/v1/resources/getvalidcourses', methods=['POST'])
+@app.route('/getvalidcourses', methods=['POST'])
+@cross_origin()
 def getValidCourses():
     requestData = request.get_json()
     chosenCourses = requestData["selection"]
@@ -100,20 +100,21 @@ def getValidCourses():
     subjectDict = {}
     # Map query data to Course object
     for course in courses:
+        print(course.keys())
+        print(course['CourseId'])
+        print(course['Number'])
         newCourse = Course(course['CourseId'], course['Number'],
                            course['SubjectName'], course['Suffix'], course['Name'],course['Description'],course['SubjectId'])
         courseList.append(newCourse)
         subjectDict[course['SubjectId']] = course['SubjectName']
     availableCourses = [ob.__dict__ for ob in courseList]
     subjectList =  [ {'subjectId':k,'subjectName':v} for k, v in subjectDict.items() ]
-    #subjectList.append({'subjectId':12,'subjectName':"Calculus"})
     return{"availableCourses": availableCourses, "subjectList":subjectList}
 
-@app.route('/api/v1/resources/prereqsandantireqs',methods=['GET'])
+@app.route('/prereqsandantireqs',methods=['GET'])
 @cross_origin()
 def getPrereqsAndAntireqs():
     courseId = request.args.get('courseId')
     prereqs = getPrereqs(courseId)
     antireqs = getAntireqs(courseId)
     return {"prereqCourses":prereqs,"antireqCourses":antireqs}
-app.run()

@@ -1,5 +1,5 @@
 SELECT
-    AvaiCourses.CourseId, SubjectName,Number,Suffix,Description,Weight,Name,SubjectId
+    AvaiCourses.CourseId AS CourseId, SubjectName,Number,Suffix,Description,Weight,Name,SubjectId
 FROM
     (
         SELECT

@@ -74,7 +74,7 @@ class CourseSelector extends Component {
     newCourseData.courseData.courseId = course.courseId;
 
     fetch(
-      "http://127.0.0.1:5000/api/v1/resources/prereqsandantireqs?courseId=" +
+      "https://i9fj9rd3gk.execute-api.us-east-1.amazonaws.com/dev/prereqsandantireqs?courseId=" +
         course.courseId
     )
       .then((res) => res.json())
@@ -105,16 +105,19 @@ class CourseSelector extends Component {
       );
   };
   getValidCourses = () => {
-    fetch("http://127.0.0.1:5000/api/v1/resources/getvalidcourses", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        selection: this.state.allChosenCourses,
-        includeNoPrereqs: this.state.noPrereqs,
-      }),
-    })
+    fetch(
+      "https://i9fj9rd3gk.execute-api.us-east-1.amazonaws.com/dev/getvalidcourses",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          selection: this.state.allChosenCourses,
+          includeNoPrereqs: this.state.noPrereqs,
+        }),
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         this.setState({
@@ -191,7 +194,7 @@ class CourseSelector extends Component {
   };
 
   componentDidMount() {
-    fetch("http://127.0.0.1:5000/api/v1/resources/courses")
+    fetch("https://i9fj9rd3gk.execute-api.us-east-1.amazonaws.com/dev/courses")
       .then((res) => res.json())
       .then(
         (result) => {

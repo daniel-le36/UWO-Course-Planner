@@ -1,5 +1,5 @@
 SELECT
-    Courses.CourseId,
+    Courses.CourseId AS CourseId,
     SubjectName,
     Number,
     Suffix,
