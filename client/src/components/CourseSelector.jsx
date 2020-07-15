@@ -3,28 +3,35 @@ import CourseModal from "./CourseModal";
 import ValidCourses from "./ValidCourses";
 import CourseList from "./CourseList";
 import { Dropdown, Button, List, Header } from "semantic-ui-react";
+
+//Terms used:
+// Valid Course: A course that can be taken because the user has the prerequisites for
+// Taken Course: A course that the user has taken
+// Staged Course: A course that the user has chosen from the dropdown but hasn't been added to the list of taken courses
+// Planned Course: A valid course that the user has added to their plan
 class CourseSelector extends Component {
   state = {
-    allChosenCourses: [], // Master list of selected courses
-    selectedCourses: [],
+    allChosenCourses: [], // Master list of chosen courses (includes taken, staged, and planned courses)
+    selectedCourses: [], // List of taken courses
     courseList: [],
-    availableCourses: [],
-    modalOpen: false,
+    availableCourses: [], // List of valid courses
+    modalOpen: false, // Modal will display what courses a valid course can be used as a prerequisite or antirequisite
     modalContent: {
       courseData: { title: "", description: "", courseId: -1 },
       newPrereqs: [],
       newAntireqs: [],
     },
     activeIndex: -1,
-    noPrereqs: false,
-    filterBySubjects: [],
-    availableSubjects: [],
+    noPrereqs: false, // Sets whether to display valid courses with no prerequisites
+    availableSubjects: [], // List of subjects from the valid courses
     filteredSubjs: [],
-    chosenSubj: -1,
-    subjList: [],
+    chosenSubj: -1, // ID of the subject to filter the courses in the dropdown by
+    subjList: [], // List of the subjects for the courses in the dropdown
     chosenCourses: [], //Temporary list of courses before they are added
     plannedCourses: [], //List of courses added from the valid courses section
   };
+
+  // Toggle whether to include courses that have no prerequisites. Updates valid course list
   toggleNoPrereqs = () => {
     const noprereqs = this.state.noPrereqs;
     this.setState(
@@ -104,6 +111,8 @@ class CourseSelector extends Component {
         }
       );
   };
+
+  // Gets the list of valid courses that can be taken based on the given courses already taken
   getValidCourses = () => {
     fetch(
       "https://i9fj9rd3gk.execute-api.us-east-1.amazonaws.com/dev/getvalidcourses",
@@ -114,7 +123,7 @@ class CourseSelector extends Component {
         },
         body: JSON.stringify({
           selection: this.state.allChosenCourses,
-          includeNoPrereqs: this.state.noPrereqs,
+          includeNoPrereqs: this.state.noPrereqs, // Indicates whether courses with no prereqs should be fetched
         }),
       }
     )
@@ -133,6 +142,8 @@ class CourseSelector extends Component {
         });
       });
   };
+
+  // Add selected course to the staging list without updating the valid courses list
   addCourse = (event, { value }) => {
     const courseList = [...this.state.chosenCourses];
     courseList.push(value);
@@ -140,8 +151,9 @@ class CourseSelector extends Component {
     allCourses.push(value);
     this.setState({ chosenCourses: courseList, allChosenCourses: allCourses });
   };
+
+  // Add the courses from the staging list and update the valid course list
   addPlannedCourse = (event, { value }) => {
-    console.log(value);
     const courseList = [...this.state.plannedCourses];
     courseList.push(value);
     const allCourses = [...this.state.allChosenCourses];
@@ -153,6 +165,8 @@ class CourseSelector extends Component {
       }
     );
   };
+
+  // Remove a course from one of the three lists
   removeCourse = (value, removeFromList) => {
     const courseList = [
       ...this.state.allChosenCourses.filter((x) => x !== value),
@@ -205,8 +219,6 @@ class CourseSelector extends Component {
             newCourse.subjectId = course.subjectId;
             newCourse.subject = course.subject;
             newCourse.text =
-              /*course.subject +
-              " " +*/
               course.number.toString() + course.suffix + " - " + course.name;
             return newCourse;
           });
@@ -235,13 +247,12 @@ class CourseSelector extends Component {
     return (
       <div id="CourseSelection">
         <div id="CourseListSection">
-          <div className={"courseListNoFilter"} /* style={{ width: "40%" }} */>
+          <div className={"courseListNoFilter"}>
             <Header as="h3" className="courseListHeader">
               <Header.Content>Choose Courses You've Taken</Header.Content>
             </Header>
 
-            <Dropdown
-              /* style={{ width: "40%" }} */
+            <Dropdown /*Dropdown to filter the list of courses by subject*/
               id="SubjectFilter"
               placeholder="Choose Subject"
               search
@@ -253,7 +264,7 @@ class CourseSelector extends Component {
               options={this.state.subjList}
             />
 
-            <Dropdown
+            <Dropdown /*Dropdown to choose a course to add as a staged course*/
               placeholder="Search for Courses"
               search
               fluid
@@ -266,7 +277,7 @@ class CourseSelector extends Component {
               onChange={this.addCourse}
               options={this.displayCourses()}
             />
-            <CourseList
+            <CourseList /*List of staged courses picked*/
               courseList={this.state.courseList.filter((i) =>
                 this.state.chosenCourses.includes(i.value)
               )}
@@ -275,7 +286,7 @@ class CourseSelector extends Component {
               listHeight="150px"
             />
 
-            <Button
+            <Button /*Button to add staged courses to the list of taken courses*/
               id="addButton"
               style={{ display: "block" }}
               onClick={this.addChosenCourseToTakenList}
@@ -283,12 +294,12 @@ class CourseSelector extends Component {
               Add Course(s)
             </Button>
           </div>
-          <div className="courseListNoFilter" /* style={{ width: "30%" }} */>
+          <div className="courseListNoFilter">
             <Header as="h3" className="courseListHeader">
               <Header.Content>Courses You've Taken</Header.Content>
             </Header>
 
-            <CourseList
+            <CourseList /*List of taken courses*/
               courseList={this.state.courseList.filter((i) =>
                 this.state.selectedCourses.includes(i.value)
               )}
@@ -297,11 +308,11 @@ class CourseSelector extends Component {
               listHeight="250px"
             />
           </div>
-          <div className="courseListNoFilter" /* style={{ width: "30%" }} */>
+          <div className="courseListNoFilter">
             <Header as="h3" className="courseListHeader">
               <Header.Content>Planned Courses</Header.Content>
             </Header>
-            <CourseList
+            <CourseList /*List of planned courses*/
               courseList={this.state.courseList.filter((i) =>
                 this.state.plannedCourses.includes(i.value)
               )}
@@ -312,7 +323,7 @@ class CourseSelector extends Component {
           </div>
         </div>
 
-        <ValidCourses
+        <ValidCourses /*List of valid courses that can be taken*/
           availableSubjects={this.state.availableSubjects}
           availableCourses={this.state.availableCourses}
           toggleNoPrereqs={this.toggleNoPrereqs}
